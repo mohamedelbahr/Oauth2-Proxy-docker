@@ -1,0 +1,14 @@
+version: '3'
+services:
+  oauth:
+    image: quay.io/oauth2-proxy/oauth2-proxy:latest
+    ports:
+    - "${EXTERNAL_PORT}:4180"
+    entrypoint: /bin/oauth2-proxy
+    command:
+    - --client-id=${GOOGLE_APP_CLIENT_ID}
+    - --client-secret=${GOOGLE_APP_CLIENT_SECRET}
+    - --email-domain=${ALLOWED_DOMAIN}
+    - --cookie-secret=${COOKIE_SECRET}
+    - --cookie-secure=true
+    - --http-address=${LISTEN_ADDRESS}
