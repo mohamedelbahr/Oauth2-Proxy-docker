@@ -5,6 +5,7 @@ services:
     ports:
     - "${EXTERNAL_PORT}:4180"
     entrypoint: /bin/oauth2-proxy
+    restart: always
     command:
     - --client-id=${GOOGLE_APP_CLIENT_ID}
     - --client-secret=${GOOGLE_APP_CLIENT_SECRET}
